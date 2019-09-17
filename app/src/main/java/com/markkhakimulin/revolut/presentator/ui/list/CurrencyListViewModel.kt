@@ -24,7 +24,7 @@ class CurrencyListViewModel
         value = listOf(CurrencyViewModel(BASE_INIT,1.0,true))
     }
     val error = MutableLiveData<String>()
-    val loading =  ObservableInt(View.GONE)
+    val loading =  ObservableInt(View.VISIBLE)
     val rv = ObservableInt(View.GONE)
 
     companion object {
@@ -39,7 +39,7 @@ class CurrencyListViewModel
 
         currencyJob = GlobalScope.launch(Dispatchers.IO, CoroutineStart.DEFAULT, null, {
 
-            delay(100)
+            //delay(100)
 
             while (isActive) { //looping this call
 
