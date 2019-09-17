@@ -44,6 +44,8 @@ class CurrencyListFragment : BaseFragment<CurrencyListFragmentBinding>() {
                 adapter = CurrencyAdapter(mViewModel)
                 layoutManager = LinearLayoutManager(getBaseActivity(), RecyclerView.VERTICAL, false)
             }
+        this.mBinding.recyclerView.setHasFixedSize(true)
+        this.mBinding.recyclerView.setItemViewCacheSize(20)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

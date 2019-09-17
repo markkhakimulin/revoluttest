@@ -33,8 +33,8 @@ class BindingAdapters {
         @JvmStatic
         @BindingAdapter("android:src")
         fun setImageResource(view: ImageView, img: Int) {
+
             Glide.with(view.context).load(img).apply(RequestOptions.circleCropTransform()).into(view)
-            //view.setImageResource(img)
         }
 
         @BindingAdapter("android:hideKeyboardOnFocusDone")

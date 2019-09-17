@@ -22,14 +22,6 @@ class CurrencyAdapter(
     private val viewModel: CurrencyListViewModel) : RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder>() {
     private var recyclerView : RecyclerView? = null
 
-    companion object {
-        //static ids
-        val currencyIds :List<String> = listOf("EUR","AUD","BGN","BRL","CAD","CHF","CNY","CZK",
-            "DKK","GBP","HKD","HRK","HUF","IDR","ILS","INR","ISK","JPY","KRW","MXN","MYR","NOK",
-            "NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","USD","ZAR")
-
-    }
-
     init {
         setHasStableIds(true)
     }
@@ -56,11 +48,10 @@ class CurrencyAdapter(
     }
 
     override fun getItemId(position: Int): Long {
-        return currencyIds.indexOf((
-            viewModel.rates.value?.let {
-                it[position].name
-            })
-        ).toLong()//return index of name
+
+        return viewModel.rates.value?.let {
+            it[position].name.hashCode().toLong()
+        }!!
     }
 
     override fun getItemCount() = viewModel.rates.value?.size ?: 0

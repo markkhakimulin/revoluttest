@@ -68,6 +68,8 @@ class CurrencyListViewModel
     }
 
 
+
+
     override fun onCleared() {
         super.onCleared()
         currencyJob?.cancel()
